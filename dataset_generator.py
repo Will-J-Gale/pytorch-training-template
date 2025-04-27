@@ -52,3 +52,15 @@ class DataGenerator:
     
     def shuffle(self):
         shuffle(self.dataset_indexes)
+
+if __name__ == "__main__":
+    import numpy as np
+
+    batch_size = 10
+    dataset = np.arange(100)
+    data_genreator = DataGenerator(dataset, batch_size, "cpu")
+    data_genreator.load_data = lambda data: (data, data)
+
+    for x, y in data_genreator:
+        print("X: ", x)
+        print("Y: ", y)
