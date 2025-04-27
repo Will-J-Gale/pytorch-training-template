@@ -16,7 +16,7 @@ class DataGenerator:
         self.shuffle()
 
     def load_data(self, data):
-        #Return train_X, train_Y for single part of batch
+        #@TODO Return train_X, train_Y for single part of batch
         raise NotImplementedError
 
     def on_data_loaded(self, future):
