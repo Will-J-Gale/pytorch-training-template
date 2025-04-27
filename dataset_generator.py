@@ -13,7 +13,6 @@ class DataGenerator:
         self.input_batch = []
         self.output_batch = []
         self.dataset_indexes = np.arange(len(dataset))
-        self.shuffle()
 
     def load_data(self, data):
         #@TODO Return train_X, train_Y for single part of batch
