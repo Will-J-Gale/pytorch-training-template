@@ -22,7 +22,7 @@ class DataGenerator:
     def on_data_loaded(self, future):
         x, y = future.result()
         self.input_batch.append(x)
-        self.input_batch.append(y)
+        self.output_batch.append(y)
 
     def __len__(self):
         return math.ceil(len(self.dataset) / self.batch_size)
