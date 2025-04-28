@@ -64,8 +64,8 @@ try:
             bar_format="{n_fmt}/{total_fmt} {percentage:3.0f}%|{bar:20} | ETA: {elapsed}<{remaining} - Loss: {postfix}",
             postfix=0) as t:
 
-            for i, (train_X, train_Y) in enumerate(training_data_generator):
-                global_step = i + (epoch * len(training_data_generator))
+            for batch_index, (train_X, train_Y) in enumerate(training_data_generator):
+                global_step = batch_index + (epoch * len(training_data_generator))
                 optimizer.zero_grad()
 
                 outputs = model(train_X)
