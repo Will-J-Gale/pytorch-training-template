@@ -55,7 +55,6 @@ if(os.path.exists(CHECKPOINT_PATH)):
 try:
     for epoch in range(start_epoch, epochs):
         print(f"Epoch: {epoch+1}/{epochs}")
-
         losses = []
         training_data_generator.shuffle()
         model.train()
@@ -66,6 +65,7 @@ try:
             postfix=0) as t:
 
             for i, (train_X, train_Y) in enumerate(training_data_generator):
+                global_step = i + (epoch * len(training_data_generator))
                 optimizer.zero_grad()
 
                 outputs = model(train_X)
@@ -76,7 +76,7 @@ try:
                 loss_value = loss.item()
                 losses.append(loss_value)
 
-                writer.add_scalar("training_loss", loss_value, i)
+                writer.add_scalar("training_loss", loss_value, global_step)
                 t.postfix = np.average(losses)
                 t.update()
 
